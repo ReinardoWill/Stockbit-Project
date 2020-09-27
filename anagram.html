@@ -1,0 +1,43 @@
+<script type="text/javascript">
+
+	function sort(arr,n){
+		if (n == 1) {
+            return;
+		}
+		for(var i=0;i<arr.length;i++){
+			if (arr[i] > arr[i+1]) 
+            { 
+                var temp = arr[i]; 
+                arr[i] = arr[i+1]; 
+                arr[i+1] = temp; 
+            } 
+		}
+		sort(arr, n-1);
+	}
+	var strings=['kita', 'atik', 'tika', 'aku', 'kia', 'makan', 'kua'];
+	var sorted_strings=[];
+	var splitter;
+
+	for(var i=0;i<strings.length;i++){
+		splitter=strings[i].split("");
+		sort(splitter, splitter.length);
+		var text=splitter.join();
+		sorted_strings.push(text);
+	}
+	var grouped = [];
+	for (var i = 0; i < sorted_strings.length; i++) {
+	  if(!grouped[sorted_strings[i]]) {
+	    grouped[sorted_strings[i]] = [];
+	  }
+	  grouped[sorted_strings[i]].push(strings[i]);
+	}
+	console.log(grouped);
+
+	//output
+	for (var group in grouped) {
+	  console.log(grouped[group]); 
+	}
+
+	
+</script>
+
